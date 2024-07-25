@@ -13,11 +13,18 @@
     "256": "images/icon256.png"
   },
   "background": {
-    "service_worker": "background/index.js",
+    "service_worker": "background/index.ts",
     "type": "module"
   },
   "action": {
     "default_popup": "popup/index.html"
   },
-  "permissions": []
+  "web_accessible_resources": [
+    {
+      "resources": ["iframe/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "permissions": ["activeTab", "scripting"]
 }
+
