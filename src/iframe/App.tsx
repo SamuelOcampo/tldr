@@ -1,14 +1,23 @@
 import { useEffect } from "react";
 import logo from "../images/icon256.png";
+import { v4 as uuidv4 } from "uuid";
+
+let token = uuidv4();
 
 export const App = () => {
     useEffect(() => {
         (async () => {
             const tab = await chrome.tabs.getCurrent();
-            const response = await chrome.tabs.sendMessage(tab.id, { type: "START" });
-            // do something with response here, not outside the function
-            console.log(response);
+            chrome.tabs.sendMessage(tab.id, { type: "REGISTER", payload: token });
         })();
+    }, []);
+
+    useEffect(() => {
+        chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+            if (request.token === token) {
+                console.log(request);
+            }
+        });
     }, []);
 
     return (

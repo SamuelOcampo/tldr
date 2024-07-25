@@ -1,6 +1,7 @@
 import css from "bundle-text:./content.css";
 
 const IFRAME_ID = "tldr-iframe";
+let token;
 
 function inject() {
     const newDiv = document.createElement("div");
@@ -48,7 +49,14 @@ function init() {
     }
 
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-        if (request.type === "START") sendResponse({ type: "START", payload: "start confirmed" });
+        if (request.type === "REGISTER") {
+            token = request.payload;
+            console.log(request)
+
+            setTimeout(() => {
+                chrome.runtime.sendMessage({ type: "UPDATE", token: token, payload: "hi" });
+            });
+        }
     });
 }
 
