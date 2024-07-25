@@ -1,18 +1,13 @@
-# mv3-parcel-webext-template
+# TLDR Extension
 
 Chrome Extension boilerplate for manifest v3.
 <img align="right" width="128" src="src/images/icon256.png">
 
 This template uses [Parcel Web Extension Config](https://parceljs.org/recipes/web-extension/)
-and [release-it](https://github.com/release-it/release-it) for GitHub releases.
+and [release-it](https://github.com/release-it/release-it) for GitHub releases and it's was bootstraped using  [mv3-parcel-webext-template](https://github.com/onikienko/mv3-parcel-webext-template).
 
 ## How to use
 
-Click [<kbd>Use this template</kbd>](https://github.com/onikienko/mv3-parcel-webext-template/generate) button.
-
-- After project initialization, change the `name` field in the `package.json` file. This field will be used as a name
-  for `.zip` with release. Not the `name` field from the `manifest.json`.
-  Update `repository`, `author`, `bugs`, `license`, `homepage` props according to your needs.
 - Version number for release is used as per `package.json`. `Manifest.json` will be updated with the same
 value during release. So there is no need to update the version inside `manifes.json` manually if you will use `release` script.
 - there is configured [Dependabot version updates](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates).
